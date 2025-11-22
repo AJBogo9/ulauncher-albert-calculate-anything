@@ -1,6 +1,7 @@
 from typing import List, Tuple, Union
 import re
 import cmath
+import math
 import operator as op
 
 from calculate_anything.utils import is_types, Singleton, StupidEval
@@ -63,6 +64,9 @@ class CalculatorQueryHandler(QueryHandler, metaclass=Singleton):
             for name in dir(cmath)
             if not name.startswith('_') and not name.endswith('_')
         }
+        functions['factorial'] = math.factorial
+        functions['fact'] = math.factorial
+
         self._simple_eval = get_simple_eval(functions)
         self._function_names = list(functions.keys())
 
